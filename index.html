@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Vigilancia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #000; /* Fondo negro */
+            color: #ffd700; /* Texto amarillo */
+        }
+
+        h1 {
+            text-align: center;
+            position: relative;
+            color: #ffd700; /* Título amarillo */
+        }
+
+        h1 img {
+            position: absolute;
+            top: 0;
+            width: 160px; /* Ancho aumentado */
+            height: auto;
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.5); /* Sombra amarilla */
+        }
+
+        h1 img.left {
+            left: 0;
+        }
+
+        h1 img.right {
+            right: 0;
+        }
+
+        h2 {
+            color: #ffd700;
+        }
+
+        .section h3 {
+            background-color: #222; /* Fondo oscuro para secciones */
+            color: #ffd700; /* Texto amarillo */
+            padding: 10px;
+            border-left: 5px solid #ffd700; /* Borde amarillo */
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffd700;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="time"],
+        .form-group input[type="tel"],
+        .form-group input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 2px solid #ffd700;
+            background-color: #333; /* Fondo gris oscuro */
+            color: #ffd700; /* Texto amarillo */
+            border-radius: 4px;
+        }
+
+        .form-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #ffd700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e6b800; /* Color hover */
+        }
+
+        /* Estilos para imágenes del formulario */
+        img {
+            display: block;
+            margin: 10px auto;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.5); /* Sombra amarilla */
+        }
+
+        /* Media Queries para hacer el diseño responsivo */
+        @media (max-width: 768px) {
+            h1 img {
+                width: 100px;
+            }
+
+            body {
+                margin: 10px;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="time"],
+            .form-group input[type="tel"],
+            .form-group input[type="date"] {
+                padding: 8px;
+            }
+
+            input[type="submit"] {
+                padding: 8px 16px;
+            }
+
+            a[type="submit"] {
+                padding: 8px 16px;
+            }
+
+            .section h3 {
+                font-size: 1.2em;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 img {
+                width: 80px;
+            }
+
+            .section h3 {
+                font-size: 1em;
+            }
+
+            input[type="submit"] {
+                padding: 6px 12px;
+            }
+
+            a[type="submit"] {
+                padding: 6px 12px;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="time"],
+            .form-group input[type="tel"],
+            .form-group input[type="date"] {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>
+        <br><br><br>
+        <img src="abinbev.jpg" alt="Logo Izquierdo" class="left">
+        Verificación de la unidad de transporte
+        <img src="logo gpo modelo.png" alt="Logo Derecho" class="right">
+    </h1>
+
+    <form action="guardar_datos.php" method="post">
+            <!-- Fecha y Hora -->
+        <div class="section">
+            <h3>Este formulario cuenta con geolocalización, por lo que deberá permitir que el navegador acceda a su ubicación para comprobar que ha sido llenado en la caseta de vigilancia, de lo contrario el formulario no podrá ser llenado</h3>
+            
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div class="form-group">
+                <label for="hora">Hora (se tomará de forma automática):</label>
+                <input type="time" id="hora" name="hora" readonly>
+            </div>
+            <div class="form-group">
+                <label for="ubicacion">Ubicación (se tomará de forma automática):</label>
+                <input type="text" id="ubicacion" name="ubicacion"  required>
+                <script>
+                    document.getElementById("ubicacion").setAttribute("readonly", true);
+                </script>
+            </div>
+
+            <div class="form-group">
+                <label for="linea_transportista">Línea transportista:</label>
+                <input type="text" id="linea_transportista" name="linea_transportista" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre_operador">Nombre del operador:</label>
+                <input type="text" id="nombre_operador" name="nombre_operador" required>
+            </div>
+            <div class="form-group">
+                <label for="placas">Placas:</label>
+                <input type="text" id="placas" name="placas" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">Fecha cita: (opcional)</label>
+                <input type="date" id="fecha_cita" name="fecha_cita">
+            </div>
+
+            <div class="form-group">
+                <label for="hora_cita">Hora de la cita (campo opcional):</label>
+                <input type="time" id="hora_cita" name="hora_cita">
+            </div>
+            <div class="form-group">
+                <label for="caja">Caja:</label>
+                <input type="text" id="caja" name="caja" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo_licencia">Tipo de licencia:</label>
+                <input type="text" id="tipo_licencia" name="tipo_licencia" required>
+            </div>
+            <div class="form-group">
+                <label for="folio">Folio (campo opcional):</label>
+                <input type="text" id="folio" name="folio">
+            </div>
+        </div>
+
+       <!-- Seguridad del Operador -->
+        <div class="section">
+            <h3>SEGURIDAD DEL OPERADOR</h3>
+            <div class="form-group">
+                <label><input type="checkbox" name="descansado"> Estás descansado para iniciar tu viaje</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="bebidas_alcoholicas"> Has ingerido bebidas alcohólicas antes de iniciar tu viaje</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="cinturon_seguridad"> Usas el cinturón de seguridad</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="respetar_limites_velocidad"> Estás comprometido a respetar los límites de velocidad de acuerdo al tramo carretero</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="cumple_epp"> Cumple con el EPP necesario</label>
+            </div>
+            <div class="form-group">
+                <label><input type="checkbox" name="prueba_alcoholimetro"> Prueba de alcoholímetro negativa</label>
+            </div>
+            <div class="form-group">
+                <label> Vigencia de licencia de conducir</label>
+                <input type="text" name="vigencia_licencia" required="">
+            </div>
+        </div>
+        
+        <div>
+        <input type="submit" value="Enviar">
+        </div>
+        <input type="hidden" name="formName" value="formulario1">
+
+    </form>
+    <div>
+    <a href="login.html" type="submit">consultar registros</a>
+    </div>
+    
+
+     <script>
+       // Obtener el campo de fecha
+        const fechaInput = document.getElementById('fecha');
+
+        // Crear un objeto de fecha
+        const today = new Date();
+
+        // Formatear la fecha en formato YYYY-MM-DD
+        const year = today.getFullYear();
+        const month = ('0' + (today.getMonth() + 1)).slice(-2); // Añadir 0 si es necesario
+        const day = ('0' + today.getDate()).slice(-2); // Añadir 0 si es necesario
+
+        // Asignar la fecha formateada al campo de fecha
+        fechaInput.value = `${year}-${month}-${day}`; 
+
+
+        // Rellenar automáticamente la hora ajustada a la zona horaria local
+        const horaInput = document.getElementById('hora');
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); // Ajustar a la zona horaria local
+        const formattedTime = now.toISOString().substring(11, 16); // Formato HH:MM
+        horaInput.value = formattedTime;
+
+
+        // Código para obtener la ubicación del navegador
+document.addEventListener("DOMContentLoaded", function () {
+    const ubicacionInput = document.getElementById('ubicacion');
+    
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            function (position) {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                const googleMapsLink = "https://www.google.com/maps?q=" + latitude + "," + longitude;
+                ubicacionInput.value = googleMapsLink;
+            },
+            function (error) {
+                alert('No se obtuvo la ubicación. Por favor, permita el acceso a la ubicación.');
+                ubicacionInput.value = ''; // Asegura que el campo esté vacío si no se obtuvo la ubicación
+            }
+        );
+    } else {
+        alert("Geolocalización no es soportada en este navegador.");
+        ubicacionInput.value = ''; // Si el navegador no soporta geolocalización
+    }
+});
+    </script>
+</body>
+</html> 
